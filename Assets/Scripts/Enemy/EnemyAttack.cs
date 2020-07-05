@@ -10,9 +10,11 @@ public class EnemyAttack : MonoBehaviour
     private EnemyStats stats;
 
     Collider[] enemiesInAttackRange;
+    float nextAttackTime = 0f;
+    public float attackCoolDownBase = 4f;
 
     void Start() {
-        stats = this.GetComponent<EnemyStats>();    
+        stats = this.GetComponent<EnemyStats>();
     }
 
     void Update()
@@ -27,8 +29,17 @@ public class EnemyAttack : MonoBehaviour
         {
             foreach (Collider enemy in enemiesInAttackRange)
             {
-                enemy.SendMessage("TakeDamage", stats.attackDamage);
+                AttackEnemy(enemy);
             }
+        }
+    }
+
+    void AttackEnemy(Collider enemy)
+    {
+        if (Time.time >= nextAttackTime)
+        {
+            enemy.SendMessage("TakeDamage", stats.attackDamage);
+            nextAttackTime = Time.time + attackCoolDownBase / stats.attackSpeed;
         }
     }
 }

@@ -7,6 +7,11 @@ public class PlayerStats : MonoBehaviour
     public int maxHealth;
     private int currentHealth;
 
+    public bool autoAttack = false;
+    public int attackDamage = 1;
+    public float attackSpeed = 1f;
+    public float attackRange = 1.2f;
+
     void Start()
     {
         currentHealth = maxHealth;

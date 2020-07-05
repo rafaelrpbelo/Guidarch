@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour
         if (selectedObject != null)
         {
             if (attackCtrl.CanAttack(selectedObject))
-                attackCtrl.Attack(selectedObject);   
+                attackCtrl.Attack(selectedObject);
         }
     }
 }
