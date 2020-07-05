@@ -259,7 +259,8 @@ GameObject:
   - component: {fileID: 590906952}
   - component: {fileID: 590906951}
   - component: {fileID: 590906957}
-  m_Layer: 0
+  - component: {fileID: 590906958}
+  m_Layer: 9
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -392,6 +393,19 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 256
+--- !u!114 &590906958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 590906950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c83c50b0ae62e20499b8731ebf130b91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
 --- !u!1 &603549960
 GameObject:
   m_ObjectHideFlags: 0
@@ -766,6 +780,8 @@ GameObject:
   - component: {fileID: 1441063344}
   - component: {fileID: 1441063343}
   - component: {fileID: 1441063347}
+  - component: {fileID: 1441063349}
+  - component: {fileID: 1441063348}
   m_Layer: 8
   m_Name: RedEnemy1
   m_TagString: Enemy
@@ -859,6 +875,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83d119773959d8d448298f75eb8f2a7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1441063348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1441063342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc4561b9f2c207246842cb8e180fc0f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackableLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  stats: {fileID: 0}
+--- !u!114 &1441063349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1441063342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d90d51ae88f197438eed84d3c66bcee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  autoAttack: 0
+  attackDamage: 1
+  attackSpeed: 1
+  attackRange: 1.2
 --- !u!1 &1524766552
 GameObject:
   m_ObjectHideFlags: 0
