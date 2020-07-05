@@ -21,9 +21,6 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if (selectedObject != null && selectedObject.CompareTag("Enemy"))
-                selectedObject.SendMessage("Interact", "deselect");
-
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
@@ -34,9 +31,6 @@ public class PlayerController : MonoBehaviour
                 if (hit.collider != null && hit.collider.gameObject != null)
                 {
                     selectedObject = hit.collider.gameObject;
-
-                    if (selectedObject.CompareTag("Enemy"))
-                        selectedObject.SendMessage("Interact", "select");
                 }
             }
         }
