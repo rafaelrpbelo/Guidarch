@@ -10,11 +10,13 @@ public class PlayerController : MonoBehaviour
     public GameObject selectedObject;
 
     PlayerAttack attackCtrl;
+    PlayerMovement movementCtrl;
 
     void Start()
     {
         navMeshAgent = this.GetComponent<NavMeshAgent>();
         attackCtrl = this.GetComponent<PlayerAttack>();
+        movementCtrl = GetComponent<PlayerMovement>();
     }
 
     void Update()
@@ -26,7 +28,7 @@ public class PlayerController : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit))
             {
-                navMeshAgent.SetDestination(hit.point);
+                movementCtrl.MoveTo(hit.point);
 
                 if (hit.collider != null && hit.collider.gameObject != null)
                 {
