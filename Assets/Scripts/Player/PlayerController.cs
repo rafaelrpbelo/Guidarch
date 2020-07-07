@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     NavMeshAgent navMeshAgent;
     public Camera cam;
-    public GameObject selectedObject;
+    public Interactable focus;
 
     PlayerAttack attackCtrl;
     PlayerMovement movementCtrl;
@@ -28,19 +28,38 @@ public class PlayerController : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit))
             {
-                movementCtrl.MoveTo(hit.point);
-
-                if (hit.collider != null && hit.collider.gameObject != null)
+                Interactable interactable = hit.collider.GetComponent<Interactable>();
+                if (interactable != null)
                 {
-                    selectedObject = hit.collider.gameObject;
+                    SetFocus(interactable);
+                }
+                else {
+                    RemoveFocus();
+                    movementCtrl.MoveTo(hit.point);
                 }
             }
         }
+    }
 
-        if (selectedObject != null)
+    void SetFocus(Interactable newFocus) {
+        if (newFocus != focus)
         {
-            if (attackCtrl.CanAttack(selectedObject))
-                attackCtrl.Attack(selectedObject);
+            if (focus != null)
+                focus.OnDefocused();
+            
+            focus = newFocus;
+            movementCtrl.FollowTarget(newFocus);
         }
+
+        newFocus.OnFocused(transform);
+    }
+
+    void RemoveFocus()
+    {
+        if (focus != null)
+            focus.OnDefocused();
+
+        focus = null;
+        movementCtrl.StopFollowingTarget();
     }
 }

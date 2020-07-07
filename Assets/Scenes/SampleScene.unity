@@ -359,7 +359,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 963194227}
-  selectedObject: {fileID: 0}
+  focus: {fileID: 0}
 --- !u!195 &590906952
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -424,6 +424,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 247457616433b2e4ea25652ed7732434, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetToFollow: {fileID: 0}
+  speedToFaceTarget: 5
 --- !u!4 &590906956
 Transform:
   m_ObjectHideFlags: 0
@@ -756,12 +758,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 590906956}
   offset: {x: 0, y: 1.5, z: -1}
-  pitch: 0
   zoomSpeed: 4
   minZoom: 5
   maxZoom: 15
   yawSpeed: 100
+  yawResetSpeed: 10
   yawTreshold: 1
+  pitch: 0
 --- !u!1 &977657665
 GameObject:
   m_ObjectHideFlags: 0
@@ -777,6 +780,7 @@ GameObject:
   - component: {fileID: 977657668}
   - component: {fileID: 977657667}
   - component: {fileID: 977657666}
+  - component: {fileID: 977657673}
   m_Layer: 8
   m_Name: RedEnemy2
   m_TagString: Enemy
@@ -903,6 +907,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &977657673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 977657665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6522d2d913f7ba2478df88ed1dd087f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactableTransform: {fileID: 0}
+  interactableRadius: 3
+  stoppingDistance: 0.7
 --- !u!1 &1152564383
 GameObject:
   m_ObjectHideFlags: 0
@@ -1011,6 +1030,7 @@ GameObject:
   - component: {fileID: 1441063347}
   - component: {fileID: 1441063349}
   - component: {fileID: 1441063348}
+  - component: {fileID: 1441063350}
   m_Layer: 8
   m_Name: RedEnemy1
   m_TagString: Enemy
@@ -1086,7 +1106,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1441063342}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.53, z: -7.8}
+  m_LocalPosition: {x: 0, y: 0.53, z: -16.58}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1137,6 +1157,21 @@ MonoBehaviour:
   attackDamage: 1
   attackSpeed: 1
   attackRange: 1.2
+--- !u!114 &1441063350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1441063342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6522d2d913f7ba2478df88ed1dd087f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactableTransform: {fileID: 1441063346}
+  interactableRadius: 3
+  stoppingDistance: 0.7
 --- !u!1 &1524766552
 GameObject:
   m_ObjectHideFlags: 0
