@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
-    public Transform interactableTransform;
+    public Transform interactableTransform = null;
     public float interactableRadius = 3f;
     public float stoppingDistance = .7f;
 
@@ -17,8 +17,7 @@ public class Interactable : MonoBehaviour
     }
 
     void Awake() {
-        if (interactableTransform == null)
-            interactableTransform = transform;
+        SetDefaultInteractableTransform();
     }
     
     void Update() {
@@ -27,6 +26,7 @@ public class Interactable : MonoBehaviour
             float distance = Vector3.Distance(player.position, transform.position);
             if (distance <= interactableRadius)
             {
+                Interact();
                 hasInteracted = true;
             }
         }
@@ -46,8 +46,16 @@ public class Interactable : MonoBehaviour
         hasInteracted = false;
     }
 
-    void OnDrawGizmosSelected() {
+    void OnDrawGizmosSelected()
+    {
+        SetDefaultInteractableTransform();
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireSphere(interactableTransform.position, interactableRadius);
+    }
+
+    void SetDefaultInteractableTransform()
+    {
+        if (interactableTransform == null)
+            interactableTransform = transform;
     }
 }
